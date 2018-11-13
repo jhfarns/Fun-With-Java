@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="639.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.Add_ProductController">
+   <children>
+      <AnchorPane layoutX="11.0" layoutY="14.0" prefHeight="616.0" prefWidth="960.0" style="-fx-border-color: gray; -fx-border-radius: 10;" AnchorPane.topAnchor="14.0">
+         <children>
+            <Label layoutX="50.0" layoutY="67.0" text="Add Product" textFill="#3710c6">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="157.0" text="ID" />
+            <Label layoutX="14.0" layoutY="212.0" text="Name" />
+            <Label layoutX="14.0" layoutY="378.0" text="Max" />
+            <Label layoutX="14.0" layoutY="266.0" text="Inv" />
+            <Label layoutX="14.0" layoutY="319.0" text="Price" />
+            <TextField fx:id="IdTextField" disable="true" layoutX="100.0" layoutY="146.0" prefHeight="39.0" prefWidth="154.0" text="Auto Gen - Disabled" />
+            <TextField fx:id="InventoryTextField" layoutX="100.0" layoutY="255.0" prefHeight="39.0" prefWidth="75.0" text="Inv" />
+            <TextField fx:id="ProductNameTextField" layoutX="100.0" layoutY="201.0" prefHeight="39.0" prefWidth="154.0" text="Product Name" />
+            <TextField fx:id="MinTextField" layoutX="240.0" layoutY="367.0" prefHeight="39.0" prefWidth="75.0" text="Min" />
+            <TextField fx:id="MaxTextField" layoutX="100.0" layoutY="367.0" prefHeight="39.0" prefWidth="75.0" text="Max" />
+            <TextField fx:id="PriceTextField" layoutX="100.0" layoutY="308.0" prefHeight="39.0" prefWidth="75.0" text="Price" />
+            <Label layoutX="190.0" layoutY="378.0" text="Min" />
+            <TableView fx:id="SearchTable" layoutX="380.0" layoutY="95.0" prefHeight="142.0" prefWidth="492.0">
+              <columns>
+                <TableColumn fx:id="SearchTablePartID" prefWidth="121.0" text="Part ID" />
+                <TableColumn fx:id="SearchTablePartName" prefWidth="122.0" text="Part Name" />
+                  <TableColumn fx:id="SearchTableInventoryLevel" prefWidth="120.0" text="Inventory Level" />
+                  <TableColumn fx:id="SearchTablePricePerUnit" prefWidth="128.0" text="Price Per Unit" />
+              </columns>
+            </TableView>
+            <TableView fx:id="AssociatedPartTable" layoutX="380.0" layoutY="324.0" prefHeight="142.0" prefWidth="492.0">
+               <columns>
+                  <TableColumn fx:id="AssociatedPartsTablePartID" prefWidth="121.0" text="Part ID" />
+                  <TableColumn fx:id="AssociatedPartsTablePartName" prefWidth="122.0" text="Part Name" />
+                  <TableColumn fx:id="AssociatedPartsTableInventoryLevel" prefWidth="120.0" text="Inventory Level" />
+                  <TableColumn fx:id="AssociatedPartsTablePricePerUnit" prefWidth="128.0" text="Price Per Unit" />
+               </columns>
+            </TableView>
+            <TextField fx:id="SearchTextField" layoutX="618.0" layoutY="42.0" prefHeight="8.0" prefWidth="178.0" />
+            <Button fx:id="SearchTableSearchButton" layoutX="529.0" layoutY="35.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" text="Search" />
+            <Button fx:id="SaveButton" layoutX="683.0" layoutY="545.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" text="Save" />
+            <Button fx:id="CancelButton" layoutX="772.0" layoutY="545.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" text="Cancel" />
+            <Button fx:id="AssociatedPartsTableDeleteButton" layoutX="772.0" layoutY="491.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" text="Delete" />
+            <Button fx:id="SearchTableAddButton" layoutX="772.0" layoutY="255.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" text="Add" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
