@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/Model/Part.java</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/View_Controller/Add_PartController.java</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/View_Controller/MainScreen.fxml</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/View_Controller/MainScreenController.java</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/Model/OutsourcedPart.java</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/Model/Inventory.java</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/Model/InhousePart.java</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/View_Controller/InventorySystemMainClass.java</file>
+        </group>
     </open-files>
 </project-private>

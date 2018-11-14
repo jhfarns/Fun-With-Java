@@ -12,6 +12,6 @@
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="James Farnsworth InventorySystem" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="View_Controller.IventorySystemMainClass"  name="James Farnsworth InventorySystem" />
+  <jfx:javafx-desc  width="800" height="600" main-class="View_Controller.InventorySystemMainClass"  name="James Farnsworth InventorySystem" />
   <update check="always"/>
 </jnlp>

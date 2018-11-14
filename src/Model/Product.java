@@ -5,13 +5,14 @@
  */
 package Model;
 
-import java.util.ArrayList;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -19,7 +20,7 @@ import javafx.beans.property.StringProperty;
  */
 public class Product {
     
-    private ArrayList<Part> associatedParts = new ArrayList<Part>();
+    private ObservableList<Part> associatedParts =  FXCollections.observableArrayList();
     private IntegerProperty productID = new SimpleIntegerProperty();
     private StringProperty name = new SimpleStringProperty(); 
     private DoubleProperty price = new SimpleDoubleProperty();
@@ -28,7 +29,51 @@ public class Product {
     private IntegerProperty max = new SimpleIntegerProperty();
     
     /*Add constructor here*/
+    public Product (int productID, String name, double price, int inStock, int min, int max, ObservableList<Part> associatedParts) {
+        this.productID.set(productID);
+        this.name.set(name);
+        this.price.set(price);
+        this.inStock.set(inStock);
+        this.min.set(min);
+        this.max.set(max);
+        this.associatedParts.addAll(associatedParts.toArray(new Part[0]));
+        
+    }
     
+    public Product (int productID, String name, double price, int inStock, int min, int max ) {
+        this.productID.set(productID);
+        this.name.set(name);
+        this.price.set(price);
+        this.inStock.set(inStock);
+        this.min.set(min);
+        this.max.set(max);
+    }
+    
+    public Product (int productID, String name, double price, int inStock, int min, int max, Part ... associatedParts ) {
+        this.productID.set(productID);
+        this.name.set(name);
+        this.price.set(price);
+        this.inStock.set(inStock);
+        this.min.set(min);
+        this.max.set(max);
+        this.associatedParts.addAll(associatedParts);
+    }
+    
+    public IntegerProperty productIDProperty() {
+        return this.productID;
+    }
+    
+    public StringProperty nameProperty() {
+        return this.name;
+    }
+    
+    public IntegerProperty inStockProperty() {
+        return this.inStock;
+    }
+    
+    public DoubleProperty priceProperty() {
+        return this.price;
+    }
     public void setName(String name) {
         
     }
@@ -72,7 +117,7 @@ public class Product {
     public void addAssociatedPart(Part ... part) {
         /* I need to be a loop through part*/
         for(Part newPart : part){
-            
+            associatedParts.add(newPart);
         }
     }
     

@@ -16,8 +16,8 @@
             <Label layoutX="14.0" layoutY="14.0" text="Parts" />
             <ButtonBar layoutX="224.0" layoutY="11.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
               <buttons>
-                  <TextField fx:id="ProductsTableTextField1" alignment="TOP_RIGHT" />
-                <Button fx:id="PartTableSearchButton" mnemonicParsing="false" text="Search" />
+                  <TextField fx:id="PartsTableTextField" alignment="TOP_RIGHT" />
+                <Button fx:id="PartTableSearchButton" mnemonicParsing="false" onAction="#searchButtonParts" text="Search" />
               </buttons>
             </ButtonBar>
             <TableView fx:id="PartsTable" layoutX="14.0" layoutY="51.0" prefHeight="167.0" prefWidth="421.0">

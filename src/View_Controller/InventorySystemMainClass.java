@@ -5,7 +5,10 @@
  */
 package View_Controller;
 
+import Model.InhousePart;
 import Model.Inventory;
+import Model.OutsourcedPart;
+import Model.Product;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +20,7 @@ import javafx.stage.Stage;
  *
  * @author Jhfar
  */
-public class IventorySystemMainClass extends Application {
+public class InventorySystemMainClass extends Application {
     
     private Inventory inventory = new Inventory();
     
@@ -28,13 +31,19 @@ public class IventorySystemMainClass extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException{
         
-        FXMLLoader loader = new FXMLLoader();
-        Parent root = loader.load(getClass().getResource("MainScreen.fxml"));
+        inventory.addPart(new InhousePart(1,"string",2.0,2,2,2,2));
+        inventory.addPart(new OutsourcedPart(2,"someString",3.0,3,3,3,"CompanyName"));
+        inventory.addProduct(new Product(1,"ProductName", 2.0,2,2,2,inventory.lookupPart(1),inventory.lookupPart(2)));
+        inventory.addProduct(new Product(2,"ProductName", 2.0,2,2,2,inventory.lookupPart(1),inventory.lookupPart(2)));
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
+        Parent root = loader.load();
+        MainScreenController controller = loader.getController();
+        controller.setInventory(inventory);
+        
+        
         
         Scene scene = new Scene(root, 1000, 500);
-        
-        /*MainScreenController controller = loader.getController();
-        controller.setMainClass(this);*/
         
         primaryStage.setScene(scene);
         primaryStage.show();

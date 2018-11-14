@@ -6,6 +6,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 /* Replace ListProperty with an actual array that holds the type classes defined part and product */
@@ -17,22 +18,53 @@ import javafx.collections.ObservableList;
  * @author Jhfar
  */
 public class Inventory {
-   private ObservableList<Product> products = FXCollections.observableArrayList();
+   private ObservableList<Product> allProducts = FXCollections.observableArrayList();
    private ObservableList<Part> allParts = FXCollections.observableArrayList();
+   /*Add 2 private variables that are lists that will integers
+   one will be for products, one will be for parts. When they are added 
+   lines of code will need to be added to the constructors to verify values
+   increment the list by one, set the of the ID member variable for the given 
+   type.
+   */
     
    public ObservableList<Part> returnAllParts() {
        return this.allParts;
    }
    
+   public ObservableList<Product> returnAllProducts() {
+       return this.allProducts;
+   }
+   
+   public ObservableList<Part> searchParts(String searchValue) {
+       ObservableList<Part> searchResults = FXCollections.observableArrayList();
+              
+       Part[] interumStateSearchValues = allParts.toArray(new Part[0]);
+       ArrayList<Part> searchableValues = new ArrayList<Part>(Arrays.asList(interumStateSearchValues));
+       
+       for(Part part : searchableValues) {
+          if (part.getName().toLowerCase().equals(searchValue)) {
+              searchResults.add(part);
+          }else if(searchValue.isEmpty()) {
+              searchResults = allParts;
+          }
+       }
+      return searchResults;
+   } 
+   
+  /* public ObservableList<Part> searchParts(int searchValue) {
+       
+       
+   }*/
+   
    public void addProduct(Product product) {
-       products.add(product);
+       allProducts.add(product);
    } 
     
    public boolean removeProduct(int Id) {
        
-       for(Product product : products){
+       for(Product product : allProducts){
            if (product.getProductID() == Id){
-               return products.remove(product);
+               return allProducts.remove(product);
            } 
        }     
        return false;
@@ -40,7 +72,7 @@ public class Inventory {
    
    public Product lookupProduct(int Id) {
               
-       for(Product product : products){
+       for(Product product : allProducts){
            if (product.getProductID() == Id) {
                return product;
            }
@@ -49,7 +81,7 @@ public class Inventory {
    }
    
    public void updateProduct(int Id, ArrayList<Part> associatedParts, String productName, double productPrice, int productMin, int productMax) {
-       for(Product product : products) {
+       for(Product product : allProducts) {
            if (product.getProductID() == Id){
                product.removeAllAssociatedParts();
                product.addAssociatedPart(associatedParts.toArray(new Part[0]));

@@ -41,6 +41,21 @@ public abstract class Part {
         return name.get();
     }
     
+    public IntegerProperty partIDProperty() {
+        return partID;
+    }
+    
+    public StringProperty nameProperty() {
+        return name;
+    }
+    
+    public IntegerProperty partLevelProperty() {
+        return inStock;
+    }
+    
+    public DoubleProperty partPriceProperty() {
+        return price;
+    }
     public void setPrice(double partPrice) {
         price.set(partPrice);
     }
