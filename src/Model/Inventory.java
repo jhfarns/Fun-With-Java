@@ -51,10 +51,50 @@ public class Inventory {
       return searchResults;
    } 
    
-  /* public ObservableList<Part> searchParts(int searchValue) {
+  public ObservableList<Part> searchParts(int searchValue) {
+        ObservableList<Part> searchResults = FXCollections.observableArrayList();
+              
+       Part[] interumStateSearchValues = allParts.toArray(new Part[0]);
+       ArrayList<Part> searchableValues = new ArrayList<Part>(Arrays.asList(interumStateSearchValues));
        
+       for(Part part : searchableValues) {
+          if (part.getPartID() == searchValue) {
+              searchResults.add(part);
+          }
+       }
+      return searchResults;
        
-   }*/
+   }
+  
+  public ObservableList<Product> searchProducts(String searchValue){
+       ObservableList<Product> searchResults = FXCollections.observableArrayList();
+
+       Product[] interumStateSearchValues = allProducts.toArray(new Product[0]);
+       ArrayList<Product> searchableValues = new ArrayList<Product>(Arrays.asList(interumStateSearchValues));
+       
+       for(Product product : searchableValues) {
+          if (product.getName().toLowerCase().equals(searchValue)) {
+              searchResults.add(product);
+          }else if(searchValue.isEmpty()) {
+              searchResults = allProducts;
+          }
+       }
+       return searchResults;
+  }
+  
+  public ObservableList<Product> searchProducts(int searchValue) {
+       ObservableList<Product> searchResults = FXCollections.observableArrayList();
+
+       Product[] interumStateSearchValues = allProducts.toArray(new Product[0]);
+       ArrayList<Product> searchableValues = new ArrayList<Product>(Arrays.asList(interumStateSearchValues));
+       
+       for(Product product : searchableValues) {
+          if (product.getProductID() == searchValue) {
+              searchResults.add(product);
+          }
+       }
+      return searchResults;
+  }
    
    public void addProduct(Product product) {
        allProducts.add(product);

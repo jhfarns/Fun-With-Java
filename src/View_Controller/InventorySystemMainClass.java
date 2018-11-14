@@ -34,7 +34,7 @@ public class InventorySystemMainClass extends Application {
         inventory.addPart(new InhousePart(1,"string",2.0,2,2,2,2));
         inventory.addPart(new OutsourcedPart(2,"someString",3.0,3,3,3,"CompanyName"));
         inventory.addProduct(new Product(1,"ProductName", 2.0,2,2,2,inventory.lookupPart(1),inventory.lookupPart(2)));
-        inventory.addProduct(new Product(2,"ProductName", 2.0,2,2,2,inventory.lookupPart(1),inventory.lookupPart(2)));
+        inventory.addProduct(new Product(2,"DifferentName", 2.0,2,2,2,inventory.lookupPart(1),inventory.lookupPart(2)));
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
         Parent root = loader.load();

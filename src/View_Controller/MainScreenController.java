@@ -8,7 +8,6 @@ package View_Controller;
 import Model.Inventory;
 import Model.Part;
 import Model.Product;
-import java.awt.event.InputMethodEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -108,22 +107,31 @@ public class MainScreenController {
         /*Try to see if you can be changed to an int. If you can change over 
         to that type and search, if not stay as string
         */
-        
-        PartsTable.setItems(inventory.searchParts(searchValue));
-        
-        
-        
-    }
-    
-    @FXML
-    void PartsTableTextFieldCheckValue(InputMethodEvent event) {
-        String searchValue = PartsTableTextField.getText();
-        
-        if(searchValue.isEmpty()){
-            PartsTable.setItems(inventory.returnAllParts());
+        try {
+            int newSearchValue = Integer.parseInt(searchValue);
+            PartsTable.setItems(inventory.searchParts(newSearchValue));
+        }
+        catch (NumberFormatException exception){
+            PartsTable.setItems(inventory.searchParts(searchValue));
         }
     }
-
-
+        
+    @FXML
+    void searchButtonProducts(ActionEvent event) {
+        String searchValue = ProductsTableTextField.getText().toLowerCase();
+        /*Try to see if you can be changed to an int. If you can change over 
+        to that type and search, if not stay as string
+        */
+        try {
+            int newSearchValue = Integer.parseInt(searchValue);
+            ProductsTable.setItems(inventory.searchProducts(newSearchValue));
+        }
+        catch (NumberFormatException exception){
+            ProductsTable.setItems(inventory.searchProducts(searchValue));
+        }
+    }
+    
+    
 }
+
 
