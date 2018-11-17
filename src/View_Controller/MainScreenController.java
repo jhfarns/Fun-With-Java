@@ -8,13 +8,16 @@ package View_Controller;
 import Model.Inventory;
 import Model.Part;
 import Model.Product;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 public class MainScreenController {
     
@@ -131,7 +134,45 @@ public class MainScreenController {
         }
     }
     
+    @FXML
+    void addPartPartsTable(ActionEvent event) {
+       
+    }
     
+        @FXML
+    void deletePartPartsTable(ActionEvent event) {
+         Part selectedPart = PartsTable.getSelectionModel().getSelectedItem();
+         
+         inventory.deletePart(selectedPart);
+    }
+
+    @FXML
+    void deleteProductProductsTable(ActionEvent event) {
+        Product selectedProduct = ProductsTable.getSelectionModel().getSelectedItem();
+        
+        inventory.removeProduct(selectedProduct.getProductID());
+        
+    }
+    
+    @FXML
+    AnchorPane rootPane;
+    
+    @FXML
+    void partsModifyButton(ActionEvent event) throws IOException {
+        
+        Part selectedPart = PartsTable.getSelectionModel().getSelectedItem();
+        FXMLLoader modifyPart = new FXMLLoader(getClass().getResource("Modify_Part.fxml"));
+        AnchorPane modifiedAnchor = modifyPart.load();
+        rootPane.getChildren().setAll(modifiedAnchor);
+        
+        Modify_PartController modifyController = modifyPart.getController();
+        modifyController.getSelectedPart(selectedPart);
+        modifyController.loadInventory(inventory);
+        
+        
+    }
+    
+   
 }
 
 

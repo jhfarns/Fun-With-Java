@@ -31,10 +31,10 @@ public class InventorySystemMainClass extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException{
         
-        inventory.addPart(new InhousePart(1,"string",2.0,2,2,2,2));
-        inventory.addPart(new OutsourcedPart(2,"someString",3.0,3,3,3,"CompanyName"));
-        inventory.addProduct(new Product(1,"ProductName", 2.0,2,2,2,inventory.lookupPart(1),inventory.lookupPart(2)));
-        inventory.addProduct(new Product(2,"DifferentName", 2.0,2,2,2,inventory.lookupPart(1),inventory.lookupPart(2)));
+        inventory.addPart(new InhousePart(1,"Spatula",2.0,2,2,2,2));
+        inventory.addPart(new OutsourcedPart(2,"Krabby Pattie",3.0,3,3,3,"The Krust Crew"));
+        inventory.addProduct(new Product(1,"Krabby Pattie Burger", 2.0,2,2,2,inventory.lookupPart(1),inventory.lookupPart(2)));
+        inventory.addProduct(new Product(2,"Is there anything else?", 2.0,2,2,2,inventory.lookupPart(1),inventory.lookupPart(2)));
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainScreen.fxml"));
         Parent root = loader.load();

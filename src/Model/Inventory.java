@@ -102,7 +102,10 @@ public class Inventory {
     
    public boolean removeProduct(int Id) {
        
-       for(Product product : allProducts){
+       Product[] interumStateSearchValues = allProducts.toArray(new Product[0]);
+       ArrayList<Product> searchableValues = new ArrayList<Product>(Arrays.asList(interumStateSearchValues));
+       
+       for(Product product : searchableValues){
            if (product.getProductID() == Id){
                return allProducts.remove(product);
            } 
@@ -139,8 +142,11 @@ public class Inventory {
    
    public boolean deletePart(Part realPart) {
        /*this is jenky, think about changing the parameter to an int for ID of the part*/
-       for(Part part : allParts){
-           if (part == realPart){
+       Part[] interumStateSearchValues = allParts.toArray(new Part[0]);
+       ArrayList<Part> searchableValues = new ArrayList<Part>(Arrays.asList(interumStateSearchValues));
+       
+       for(Part part : searchableValues){
+           if (part.getPartID() == realPart.getPartID()){
                return allParts.remove(part);
            } 
        }     
