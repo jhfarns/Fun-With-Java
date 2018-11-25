@@ -56,8 +56,8 @@
             </TableView>
             <ButtonBar layoutX="141.0" layoutY="218.0" prefHeight="40.0" prefWidth="200.0">
                <buttons>
-                  <Button fx:id="ProductsTableAddButton" mnemonicParsing="false" text="Add" />
-                  <Button fx:id="ProductsTableModifyButton" mnemonicParsing="false" text="Modify" />
+                  <Button fx:id="ProductsTableAddButton" mnemonicParsing="false" onAction="#productsAddButton" text="Add" />
+                  <Button fx:id="ProductsTableModifyButton" mnemonicParsing="false" onAction="#productsModifyButton" text="Modify" />
                   <Button fx:id="ProductsTableDeleteButton" mnemonicParsing="false" onAction="#deleteProductProductsTable" text="Delete" />
                </buttons>
             </ButtonBar>

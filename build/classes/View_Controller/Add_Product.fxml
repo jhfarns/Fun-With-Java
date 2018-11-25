@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="639.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.Add_ProductController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="639.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.Add_ProductController">
    <children>
       <AnchorPane layoutX="11.0" layoutY="14.0" prefHeight="616.0" prefWidth="960.0" style="-fx-border-color: gray; -fx-border-radius: 10;" AnchorPane.topAnchor="14.0">
          <children>
@@ -46,11 +46,11 @@
                </columns>
             </TableView>
             <TextField fx:id="SearchTextField" layoutX="618.0" layoutY="42.0" prefHeight="8.0" prefWidth="178.0" />
-            <Button fx:id="SearchTableSearchButton" layoutX="529.0" layoutY="35.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" text="Search" />
-            <Button fx:id="SaveButton" layoutX="683.0" layoutY="545.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" text="Save" />
-            <Button fx:id="CancelButton" layoutX="772.0" layoutY="545.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" text="Cancel" />
-            <Button fx:id="AssociatedPartsTableDeleteButton" layoutX="772.0" layoutY="491.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" text="Delete" />
-            <Button fx:id="SearchTableAddButton" layoutX="772.0" layoutY="255.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" text="Add" />
+            <Button fx:id="SearchTableSearchButton" layoutX="529.0" layoutY="35.0" mnemonicParsing="false" onAction="#searchButtonParts" prefHeight="39.0" prefWidth="75.0" text="Search" />
+            <Button fx:id="SaveButton" layoutX="683.0" layoutY="545.0" mnemonicParsing="false" onAction="#saveToInventory" prefHeight="39.0" prefWidth="75.0" text="Save" />
+            <Button fx:id="CancelButton" layoutX="772.0" layoutY="545.0" mnemonicParsing="false" onAction="#cancelModifyButton" prefHeight="39.0" prefWidth="75.0" text="Cancel" />
+            <Button fx:id="AssociatedPartsTableDeleteButton" layoutX="772.0" layoutY="491.0" mnemonicParsing="false" onAction="#deletePartAssociatedPartsTable" prefHeight="39.0" prefWidth="75.0" text="Delete" />
+            <Button fx:id="SearchTableAddButton" layoutX="772.0" layoutY="255.0" mnemonicParsing="false" onAction="#addAPart" prefHeight="39.0" prefWidth="75.0" text="Add" />
          </children>
       </AnchorPane>
    </children>

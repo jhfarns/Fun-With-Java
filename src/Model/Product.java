@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -28,9 +30,17 @@ public class Product {
     private IntegerProperty min = new SimpleIntegerProperty();
     private IntegerProperty max = new SimpleIntegerProperty();
     
-    /*Add constructor here*/
-    public Product (int productID, String name, double price, int inStock, int min, int max, ObservableList<Part> associatedParts) {
-        this.productID.set(productID);
+    public Product() {
+        this.productID.set(500);
+        this.name.set("Temporary Value");
+        this.price.set(0.0);
+        this.inStock.set(0);
+        this.min.set(0);
+        this.max.set(100);
+    }
+    
+    public Product (Inventory inventory, String name, double price, int inStock, int min, int max, ObservableList<Part> associatedParts) {
+        this.productID.set(makeID(inventory.returnProductIDList()));
         this.name.set(name);
         this.price.set(price);
         this.inStock.set(inStock);
@@ -40,8 +50,8 @@ public class Product {
         
     }
     
-    public Product (int productID, String name, double price, int inStock, int min, int max ) {
-        this.productID.set(productID);
+    public Product (Inventory inventory, String name, double price, int inStock, int min, int max) {
+        this.productID.set(makeID(inventory.returnProductIDList()));
         this.name.set(name);
         this.price.set(price);
         this.inStock.set(inStock);
@@ -49,14 +59,24 @@ public class Product {
         this.max.set(max);
     }
     
-    public Product (int productID, String name, double price, int inStock, int min, int max, Part ... associatedParts ) {
-        this.productID.set(productID);
+    public Product (Inventory inventory, String name, double price, int inStock, int min, int max, Part ... associatedParts) {
+        this.productID.set(makeID(inventory.returnProductIDList()));
         this.name.set(name);
         this.price.set(price);
         this.inStock.set(inStock);
         this.min.set(min);
         this.max.set(max);
         this.associatedParts.addAll(associatedParts);
+    }
+    
+    public int makeID(ObservableList<Integer> idList) {
+        int ID = idList.size();
+        idList.add(ID);
+        return ID;
+    }
+    
+    public ObservableList<Part> returnAllParts() {
+        return this.associatedParts;
     }
     
     public IntegerProperty productIDProperty() {
@@ -75,7 +95,7 @@ public class Product {
         return this.price;
     }
     public void setName(String name) {
-        
+        this.name.set(name);
     }
     
     public String getName() {
@@ -87,7 +107,7 @@ public class Product {
     }
     
     public double getPrice() {
-        return price.get();
+       return price.get();
     }
     
     public void setInStock(int number) {

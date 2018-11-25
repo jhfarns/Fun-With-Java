@@ -15,6 +15,11 @@ import javafx.beans.property.StringProperty;
 public class OutsourcedPart extends Part {
     
     StringProperty companyName = new SimpleStringProperty();
+   
+    public OutsourcedPart (Inventory inventory, String partName, double partPrice, int partInStock, int partMin, int partMax, String compName) {
+        super(inventory, partName, partPrice, partInStock, partMin, partMax);
+        this.companyName.set(compName);
+    }
     
     public OutsourcedPart (int Id, String partName, double partPrice, int partInStock, int partMin, int partMax, String compName) {
         super(Id, partName, partPrice, partInStock, partMin, partMax);

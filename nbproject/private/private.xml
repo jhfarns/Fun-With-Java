@@ -6,8 +6,12 @@
             <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/Model/Part.java</file>
             <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/View_Controller/MainScreenController.java</file>
             <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/Model/Product.java</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/Model/OutsourcedPart.java</file>
             <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/Model/Inventory.java</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/Model/InhousePart.java</file>
             <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/View_Controller/InventorySystemMainClass.java</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/View_Controller/Add_ProductController.java</file>
+            <file>file:/D:/Java1/javaProject/James%20Farnsworth%20InventorySystem/src/View_Controller/Modify_ProductController.java</file>
         </group>
     </open-files>
 </project-private>

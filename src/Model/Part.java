@@ -11,6 +11,8 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -23,6 +25,19 @@ public abstract class Part {
     IntegerProperty inStock = new SimpleIntegerProperty();
     IntegerProperty min = new SimpleIntegerProperty(); 
     IntegerProperty max = new SimpleIntegerProperty();
+  
+    public Part(Inventory inventory, String partName, double partPrice, int partInStock, int partMin, int partMax) {
+        
+        
+        partID.set(makeID(inventory.returnIDList()));
+        name.set(partName);
+        price.set(partPrice);
+        inStock.set(partInStock);
+        min.set(partMin);
+        max.set(partMax);
+    }
+    
+    
     
     public Part(int Id, String partName, double partPrice, int partInStock, int partMin, int partMax) {
         partID.set(Id);
@@ -31,6 +46,12 @@ public abstract class Part {
         inStock.set(partInStock);
         min.set(partMin);
         max.set(partMax);
+    }
+    
+    public int makeID(ObservableList<Integer> idList) {
+       int ID = idList.size();
+       idList.add(ID);
+       return ID;
     }
     
     public void setName(String partName) {

@@ -20,13 +20,26 @@ import javafx.collections.ObservableList;
 public class Inventory {
    private ObservableList<Product> allProducts = FXCollections.observableArrayList();
    private ObservableList<Part> allParts = FXCollections.observableArrayList();
-   /*Add 2 private variables that are lists that will integers
-   one will be for products, one will be for parts. When they are added 
-   lines of code will need to be added to the constructors to verify values
-   increment the list by one, set the of the ID member variable for the given 
-   type.
+   private ObservableList<Integer> partIdList = FXCollections.observableArrayList();
+   private ObservableList<Integer> productIdList = FXCollections.observableArrayList();
+
+   /*
+   -overload addProduct mehtod with boolean value. True to call creatID on the
+   product and set it.
+   -Have overlaoded value set ID value you to newly generated value
+   ParameterProduct.setProductID(ParameterProduct.makeID(inventory.returnProductIDList()));
    */
-    
+   
+   
+   public ObservableList<Integer> returnProductIDList(){
+       return this.productIdList;
+   }
+   
+   
+   public ObservableList<Integer> returnIDList(){
+       return this.partIdList;
+   }
+   
    public ObservableList<Part> returnAllParts() {
        return this.allParts;
    }
@@ -99,6 +112,13 @@ public class Inventory {
    public void addProduct(Product product) {
        allProducts.add(product);
    } 
+   
+   public void addProduct(Product product, boolean value) {
+       product.setProductID(product.makeID(this.productIdList));
+       if(value) {
+           allProducts.add(product);
+       }
+   }
     
    public boolean removeProduct(int Id) {
        

@@ -16,6 +16,12 @@ public class InhousePart extends Part {
     
     IntegerProperty machineID = new SimpleIntegerProperty();
     
+    
+     public InhousePart (Inventory inventory, String partName, double partPrice, int partInStock, int partMin, int partMax, int mId) {
+        super(inventory,partName, partPrice, partInStock, partMin, partMax);
+        this.machineID.set(mId);
+     }
+    
     public InhousePart (int Id, String partName, double partPrice, int partInStock, int partMin, int partMax, int mId) {
         super(Id, partName, partPrice, partInStock, partMin, partMax);
         this.machineID.set(mId);

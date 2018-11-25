@@ -12,7 +12,10 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -25,7 +28,7 @@ public class MainScreenController {
     
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
-        PartsTable.setItems(inventory.returnAllParts());
+        PartsTable.setItems(this.inventory.returnAllParts());
         ProductsTable.setItems(inventory.returnAllProducts());
     }
     
@@ -135,23 +138,53 @@ public class MainScreenController {
     }
     
     @FXML
-    void addPartPartsTable(ActionEvent event) {
-       
+    void addPartPartsTable(ActionEvent event) throws IOException {
+        FXMLLoader modifyPart = new FXMLLoader(getClass().getResource("Add_Part.fxml"));
+        AnchorPane modifiedAnchor = modifyPart.load();
+        rootPane.getChildren().setAll(modifiedAnchor);
+        
+        Add_PartController modifyController = modifyPart.getController();
+        modifyController.loadInventory(inventory);
     }
     
         @FXML
     void deletePartPartsTable(ActionEvent event) {
-         Part selectedPart = PartsTable.getSelectionModel().getSelectedItem();
-         
-         inventory.deletePart(selectedPart);
+        
+        Part selectedPart = PartsTable.getSelectionModel().getSelectedItem();
+ 
+        Alert confirmation = new Alert(AlertType.CONFIRMATION);
+        confirmation.setContentText("Are you sure you would like to delete this Part?");
+            if(selectedPart != null) {
+            confirmation.showAndWait();
+            if(confirmation.getResult() == ButtonType.OK) {
+            inventory.deletePart(selectedPart);
+        }
+        } else {
+            Alert notSelected = new Alert(AlertType.INFORMATION);
+            notSelected.setContentText("You need to select a Part to delete");
+            notSelected.showAndWait();
+            
+            }
     }
 
     @FXML
     void deleteProductProductsTable(ActionEvent event) {
         Product selectedProduct = ProductsTable.getSelectionModel().getSelectedItem();
+
+        Alert confirmation = new Alert(AlertType.CONFIRMATION);
+        confirmation.setContentText("Are you sure you would like to delete this Product?");
         
-        inventory.removeProduct(selectedProduct.getProductID());
-        
+        if(selectedProduct != null) {
+            confirmation.showAndWait();        
+            if(confirmation.getResult() == ButtonType.OK) {
+            inventory.removeProduct(selectedProduct.getProductID());
+            }
+        } else {
+            Alert notSelected = new Alert(AlertType.INFORMATION);
+            notSelected.setContentText("You need to select a Product to delete");
+            notSelected.showAndWait();
+            
+            }
     }
     
     @FXML
@@ -159,20 +192,61 @@ public class MainScreenController {
     
     @FXML
     void partsModifyButton(ActionEvent event) throws IOException {
-        
+       
         Part selectedPart = PartsTable.getSelectionModel().getSelectedItem();
-        FXMLLoader modifyPart = new FXMLLoader(getClass().getResource("Modify_Part.fxml"));
-        AnchorPane modifiedAnchor = modifyPart.load();
-        rootPane.getChildren().setAll(modifiedAnchor);
         
-        Modify_PartController modifyController = modifyPart.getController();
-        modifyController.getSelectedPart(selectedPart);
-        modifyController.loadInventory(inventory);
+        if(selectedPart != null) {
+            FXMLLoader modifyPart = new FXMLLoader(getClass().getResource("Modify_Part.fxml"));
+            AnchorPane modifiedAnchor = modifyPart.load();
+            rootPane.getChildren().setAll(modifiedAnchor);
         
-        
+            Modify_PartController modifyController = modifyPart.getController();
+            modifyController.getSelectedPart(selectedPart);
+            modifyController.loadInventory(inventory);
+        } else{
+            Alert notSelected = new Alert(AlertType.INFORMATION);
+            
+            notSelected.setContentText("You have to select a part from the table in order to modify it.");
+            notSelected.showAndWait();
+        }
     }
     
-   
+    @FXML
+    void productsModifyButton(ActionEvent event) throws IOException {
+        
+        Product selectedProduct = ProductsTable.getSelectionModel().getSelectedItem();
+
+        if(selectedProduct != null){
+        FXMLLoader modifyProduct = new FXMLLoader(getClass().getResource("Modify_Product.fxml"));
+        AnchorPane modifiedAnchor = modifyProduct.load();
+        rootPane.getChildren().setAll(modifiedAnchor);
+        
+        Modify_ProductController modifyProductController = modifyProduct.getController();
+        modifyProductController.getSelectedProduct(selectedProduct);
+        modifyProductController.loadInventory(inventory);
+        
+
+        } else{
+            Alert notSelected = new Alert(AlertType.INFORMATION);
+            
+            notSelected.setContentText("You have to select a product from the table in order to modify it.");
+            notSelected.showAndWait();
+        }
+    }
+    
+    @FXML
+    void productsAddButton(ActionEvent event) throws IOException {
+        
+        FXMLLoader modifyProduct = new FXMLLoader(getClass().getResource("Add_Product.fxml"));
+        AnchorPane modifiedAnchor = modifyProduct.load();
+        rootPane.getChildren().setAll(modifiedAnchor);
+        
+        Add_ProductController modifyProductController = modifyProduct.getController();
+        modifyProductController.loadInventory(inventory);
+    }
 }
 
+/*
+
+*/
 
